@@ -1,5 +1,5 @@
 import kivy
-kivy.require('1.11.1') # replace with your current kivy version !
+kivy.require('1.11.1') 
 
 from kivy.app import App
 from kivy.uix.widget import Widget
@@ -16,6 +16,7 @@ import numpy as np
 Config.set('graphics', 'width', '350')
 Config.set('graphics', 'height', '550')
 
+
 class HangmanPic(Widget):
     
     def update_pic(self, wrongGuesses):
@@ -27,6 +28,7 @@ class HangmanPic(Widget):
                       pos=self.pos, 
                       size=self.size)
 
+            
 class HangmanWord(Label):
     
     def __init__(self, **kwargs):
@@ -61,6 +63,7 @@ class HangmanWord(Label):
             self.updateWord += l + " "
         self.currentWord = self.updateWord
 
+        
 class HangmanMessage(Label):
     
     def __init__(self, msg = "Let's play! Enter a letter to start.", **kwargs):
@@ -84,7 +87,8 @@ class HangmanMessage(Label):
         
     def winner(self):
         self.msg = "Nice job!"
-        
+    
+    
 class HangmanInput(TextInput):
     
     def __init__(self, maxCharacters = 0, wrongGuesses = 0, **kwargs):
@@ -104,15 +108,7 @@ class HangmanInput(TextInput):
     def _refocusTextInput(self, *args):
         self.focus = True
 
-    # When the user types enter, the input text is passed to the hWrd.update_Word() 
-        # only if guesses are less than 6
-    # self.wrongGuesses is compared to the hWrd.wrongGuesses
-    # If equal hMsg.correct_answer()
-    # Check if the word was solved and end the game if it was
-    # Else self.wrongGuesses = hWrd.wrongGuesses; hPic.update_pic()
-        # If self.wrongGuesses < 6 then hMsg.wrong_answer() 
-        # else hMsg.game_over() hWrd.actual_Word
-
+        
 class HangmanGame(Widget):
     hPic = ObjectProperty(None)
     hMsg = ObjectProperty(None)
